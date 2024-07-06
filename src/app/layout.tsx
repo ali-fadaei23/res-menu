@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 
-const fontSans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+const AkiraFont = localFont({ src: "../assets/fonts/Gotham Pro Black.ttf" });
 
 export const metadata: Metadata = {
   title: "Res Menu",
@@ -20,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={cn("min-h-screen", fontSans.variable)}>{children}</body>
+      <body
+        className={`min-h-screen w-screen flex items-center justify-center ${AkiraFont.className}`}
+      >
+        <div className='size-full sm:w-[640px] border-x-2'>{children}</div>
+      </body>
     </html>
   );
 }
