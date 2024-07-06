@@ -19,7 +19,7 @@ export default function RootLayout({
       <body
         className={`min-h-screen w-screen flex items-center justify-center ${AkiraFont.className}`}
       >
-        <div className='size-full sm:w-[640px] border-x-2'>{children}</div>
+        <div className='size-full sm:w-[480px] border-x-2'>{children}</div>
       </body>
     </html>
   );

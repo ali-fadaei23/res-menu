@@ -12,11 +12,11 @@ export const roboto_mono = Roboto_Mono({
 
 export default function LanguageScreen() {
   return (
-    <div className='w-full flex flex-col items-center gap-64'>
+    <div className='w-full flex flex-col items-center gap-80'>
       <div className='mt-10'>
         <Image src={BrandLogo} width={128} height={128} alt='Logo Company' />
       </div>
-      <div className='w-3/5'>
+      <div className='flex flex-col items-center gap-4'>
         <div className='text-center flex flex-col'>
           <p className='flex flex-col text-2xl'>
             Please choose your<span>desired language.</span>
@@ -25,27 +25,22 @@ export default function LanguageScreen() {
         <div
           className={`text-center flex flex-col ${roboto_mono.className} text-xs`}
         >
-          <div className='mt-6 flex flex-row items-center gap-6'>
+          <div className='w-full mt-6 flex flex-row items-center justify-center gap-7'>
             <Image src={FlagGb} width={48} height={48} alt='Logo Language GB' />
             <Link href={`#`}>
-              <div className='bg-neutral-200 py-3 px-2 rounded-lg w-60'>
+              <div className='bg-neutral-200 hover:bg-neutral-300 py-3 rounded-lg w-60'>
                 English
               </div>
             </Link>
           </div>
-          <Link href={`#`}>
-            <div className='mt-6 flex flex-row items-center gap-6'>
-              <Image
-                src={FlagNl}
-                width={48}
-                height={48}
-                alt='Logo Language NL'
-              />
-              <div className='bg-neutral-200 py-3 px-2 rounded-lg w-60'>
-                Netherlands
+          <div className='w-full mt-6 flex flex-row items-center justify-center gap-7'>
+            <Image src={FlagNl} width={48} height={48} alt='Logo Language NL' />
+            <Link href={`#`}>
+              <div className='bg-neutral-200 hover:bg-neutral-300 py-3 rounded-lg w-60'>
+                Dutch
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
