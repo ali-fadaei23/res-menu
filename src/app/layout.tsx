@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { Providers } from "./providers";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const AkiraFont = localFont({ src: "../assets/fonts/Gotham Pro Black.ttf" });
+export const akiraFont = localFont({
+  src: "../assets/fonts/Gotham Pro Black.ttf",
+});
 
 export const metadata: Metadata = {
   title: "Res Menu",
@@ -17,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`min-h-screen w-screen flex items-center justify-center ${AkiraFont.className}`}
+        className={`min-h-screen w-screen flex items-center justify-center ${akiraFont.className}`}
       >
-        <div className='size-full sm:w-[480px] border-x-2'>{children}</div>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

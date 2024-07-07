@@ -3,12 +3,7 @@ import BrandLogo from "../assets/wix-company-icon.svg";
 import FlagGb from "../assets/gb.svg";
 import FlagNl from "../assets/nl.svg";
 import Link from "next/link";
-import { Roboto_Mono } from "next/font/google";
-
-export const roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  display: "swap",
-});
+import { roboto_mono } from "@/app/page";
 
 export default function LanguageScreen() {
   return (
