@@ -14,7 +14,7 @@ export default function HeaderCourses() {
   return (
     <div className={`bg-header w-full flex flex-col items-center pt-20 pb-10 px-10`}>
       <div className='text-white flex flex-col items-start justify-start gap-3'>
-        <h1 className='font-extrabold'>friendly&apos;s</h1>
+        <h1 className='font-extrabold text-xl'>friendly&apos;s Restaurant</h1>
         <p className={`${roboto_mono.className}`}>
           Friendly&apos;s is a restaurant chain on the East Coast of the United
           States.{" "}
