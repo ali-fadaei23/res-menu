@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Providers } from "./providers";
+import { Providers } from "../providers";
 import localFont from "next/font/local";
-import "./globals.css";
+import Navbar from "@/components/navbar";
 
 export const GothamFont = localFont({
-  src: "../assets/fonts/Gotham Pro Black.ttf",
+  src: "../../assets/fonts/Gotham Pro Black.ttf",
 });
 
 export const metadata: Metadata = {
@@ -23,8 +23,9 @@ export default function RootLayout({
         className={`min-h-screen w-screen flex items-center justify-center ${GothamFont.className}`}
       >
         <Providers>
+          <Navbar />
           {children}
-          </Providers>
+        </Providers>
       </body>
     </html>
   );

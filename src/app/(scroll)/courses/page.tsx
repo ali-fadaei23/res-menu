@@ -5,7 +5,6 @@ import Navbar from "@/components/navbar";
 export default function Courses() {
   return (
     <main className='flex min-h-screen flex-col items-center'>
-      <Navbar />
       <HeaderCourses />
       <CoursesDetail />
     </main>

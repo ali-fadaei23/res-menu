@@ -217,27 +217,23 @@ export default function Category() {
       className={`w-full flex flex-col items-center gap-5 px-2 ${RobotoFont.className}`}
     >
       {category.map((item) => (
-        <Card
-          id={item.id}
-          shadow='sm'
-          key={item.id}
-          isPressable
-          onPress={() => console.log("item pressed")}
-        >
-          <CardBody className='overflow p-0'>
-            <Image
-              shadow='sm'
-              radius='lg'
-              alt={item.label}
-              className='object-cover w-[28rem] h-[28rem]'
-              src={item.image.src}
-            />
-          </CardBody>
-          <CardFooter className='text-small justify-between'>
-            <span className='text-lg font-semibold'>{item.label}</span>
-            <p className='text-default-500 text-lg'>{item.price}</p>
-          </CardFooter>
-        </Card>
+        <Link key={item.id} href={`/courses/${item.id}`}>
+          <Card id={item.id} shadow='sm' isPressable>
+            <CardBody className='overflow p-0'>
+              <Image
+                shadow='sm'
+                radius='lg'
+                alt={item.label}
+                className='object-cover w-[28rem] h-[28rem]'
+                src={item.image.src}
+              />
+            </CardBody>
+            <CardFooter className='text-small justify-between'>
+              <span className='text-lg font-semibold'>{item.label}</span>
+              <p className='text-default-500 text-lg'>{item.price}</p>
+            </CardFooter>
+          </Card>
+        </Link>
       ))}
     </div>
   );
