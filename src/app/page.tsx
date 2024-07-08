@@ -2,11 +2,10 @@ import LanguageScreen from "@/components/language";
 import SplashScreen from "@/components/splash";
 import Splash from "@/components/splash";
 import Image from "next/image";
-import { Roboto_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
-export const roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  display: "swap",
+export const RobotoFont = localFont({
+  src: "../assets/fonts/Roboto-Regular.ttf",
 });
 
 export default function Home() {

@@ -1,104 +1,97 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { Tabs, Tab, Card, CardBody, CardHeader } from "@nextui-org/react";
-import { roboto_mono } from "@/app/page";
+import SaladsImage from "../assets/salads.jpg";
+import EntreeImage from "../assets/entree.jpg";
+import DrinksImage from "../assets/drinks.jpg";
+import DessertImage from "../assets/dessert.jpg";
+import StartersImage from "../assets/starters.jpg";
+import SoupsImage from "../assets/soups.jpg";
+import Category from "./category";
+import { RobotoFont } from "@/app/page";
 
 export default function CoursesDetail() {
   const pathname = usePathname();
   let tabs = [
     {
-      id: "item1",
+      id: "home",
       href: "#",
-      label: "item 1",
+      label: "Home",
+      content: <Category />,
+    },
+    {
+      id: "salads",
+      href: "#",
+      image: SaladsImage,
+      label: "Salads",
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
     {
-      id: "item2",
+      id: "starters",
       href: "#",
-      label: "item 2",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: "item3",
-      href: "#",
-      label: "item 3",
+      image: StartersImage,
+      label: "Starters",
       content:
         "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     },
     {
-      id: "item4",
+      id: "entree",
       href: "#",
-      label: "item 4",
+      image: EntreeImage,
+      label: "Entree",
       content:
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
     {
-      id: "item5",
+      id: "soups",
       href: "#",
-      label: "item 5",
+      image: SoupsImage,
+      label: "Soups",
       content:
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
     {
-      id: "item6",
+      id: "drinks",
       href: "#",
-      label: "item 6",
+      image: DrinksImage,
+      label: "Drinks",
       content:
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
     {
-      id: "item7",
+      id: "dessert",
       href: "#",
-      label: "item 7",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      id: "item8",
-      href: "#",
-      label: "item 8",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      id: "item9",
-      href: "#",
-      label: "item 9",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      id: "item10",
-      href: "#",
-      label: "item 10",
+      image: DessertImage,
+      label: "Dessert",
       content:
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
   ];
   return (
-    <Tabs
-      size='sm'
-      className={`w-full`}
-      classNames={{
-        tabList: "w-full relative rounded-none p-4",
-        cursor: "w-full bg-gray-800 font-semibold rounded-full",
-        tab: "w-full py-4",
-        tabContent: `group-data-[selected=true]:text-white text-neutral-400 ${roboto_mono.className}`,
-      }}
-      variant='light'
-      color='default'
-      aria-label='Dynamic tabs'
-      items={tabs}
-    >
-      {(item) => (
-        <Tab key={item.id} title={item.label}>
-          <Card>
-            <CardBody>{item.content}</CardBody>
-          </Card>
-        </Tab>
-      )}
-    </Tabs>
+    <>
+      <Tabs
+        size='sm'
+        className={`w-full bg-white sticky top-0 z-20`}
+        classNames={{
+          tabList: "w-full relative rounded-none p-4",
+          cursor: "w-full bg-gray-800 font-semibold rounded-full",
+          tab: "w-full py-4",
+          tabContent: `group-data-[selected=true]:text-white text-neutral-400 ${RobotoFont.className}`,
+        }}
+        variant='light'
+        color='default'
+        aria-label='Dynamic tabs'
+        items={tabs}
+      >
+        {(item) => (
+          <Tab href={`#${item.id}`} key={item.id} title={item.label}>
+            <div id='home'>
+              <Category key={item.id} />
+            </div>
+          </Tab>
+        )}
+      </Tabs>
+    </>
   );
 }

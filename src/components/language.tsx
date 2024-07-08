@@ -3,7 +3,7 @@ import BrandLogo from "../assets/wix-company-icon.svg";
 import FlagGb from "../assets/gb.svg";
 import FlagNl from "../assets/nl.svg";
 import Link from "next/link";
-import { roboto_mono } from "@/app/page";
+import { RobotoFont } from "@/app/page";
 
 export default function LanguageScreen() {
   return (
@@ -18,7 +18,7 @@ export default function LanguageScreen() {
           </p>
         </div>
         <div
-          className={`text-center flex flex-col ${roboto_mono.className} text-xs`}
+          className={`text-center flex flex-col ${RobotoFont.className} text-xs`}
         >
           <div className='w-full mt-6 flex flex-row items-center justify-center gap-7'>
             <Image src={FlagGb} width={48} height={48} alt='Logo Language GB' />

@@ -2,6 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 .bg-header {
   background-image: url(../assets//restaurant-image.jpg);
   background-repeat: no-repeat;

@@ -3,7 +3,7 @@ import { Providers } from "./providers";
 import localFont from "next/font/local";
 import "./globals.css";
 
-export const akiraFont = localFont({
+export const GothamFont = localFont({
   src: "../assets/fonts/Gotham Pro Black.ttf",
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`min-h-screen w-screen flex items-center justify-center ${akiraFont.className}`}
+        className={`min-h-screen w-screen flex items-center justify-center ${GothamFont.className}`}
       >
         <Providers>{children}</Providers>
       </body>
