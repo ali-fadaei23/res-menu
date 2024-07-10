@@ -10,10 +10,8 @@ import { MdChevronLeft } from "react-icons/md";
 
 export default function Navbar() {
   const pathname = usePathname();
-
   const handleScroll = () => {
     const headerHeight = document.getElementById("courses")?.offsetHeight!;
-
     document.body.style.setProperty(
       "--background",
       `${window.scrollY > headerHeight - 50 ? "#fff" : "transparent"}`
@@ -25,6 +23,7 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    handleScroll()
     window.addEventListener("scroll", handleScroll, false);
     return () => {
       window.removeEventListener("scroll", handleScroll, false);

@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <main>
       <Navbar />
-      <main>{children}</main>
-    </>
+      {children}
+    </main>
   );
 }

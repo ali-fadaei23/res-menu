@@ -12,6 +12,8 @@ import { RobotoFont } from "@/app/page";
 
 export default function CoursesDetail() {
   const pathname = usePathname();
+  const navHeight: number = document.getElementById("navbar")?.offsetHeight!;
+  console.log(navHeight);
   let tabs = [
     {
       id: "home",
@@ -72,7 +74,7 @@ export default function CoursesDetail() {
     <>
       <Tabs
         size='sm'
-        className={`w-full bg-white sticky top-0 z-20`}
+        className={`w-full bg-white sticky top-14 z-20`}
         classNames={{
           tabList: "w-full relative rounded-none p-4",
           cursor: "w-full bg-gray-800 font-semibold rounded-full",

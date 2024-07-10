@@ -8,9 +8,8 @@ import { useEffect, useState } from "react";
 import { RobotoFont } from "@/app/page";
 
 export default function HeaderCourses() {
-  // const [scrollYPosition, setScrollYPosition] = useState(0);
-
   const handleScroll = () => {
+   
     document.body.style.setProperty(
       "--opacity",
       `${window.scrollY > 50 ? 1 : 0}`
@@ -23,16 +22,13 @@ export default function HeaderCourses() {
       window.removeEventListener("scroll", handleScroll, false);
     };
   }, []);
-
+ 
   return (
     <div
       id='courses'
       className={`bg-header w-full flex flex-col items-center pt-20 pb-10 px-10`}
     >
-      <div
-        id={`ali`}
-        className='text-white flex flex-col items-start justify-start gap-3'
-      >
+      <div className='text-white flex flex-col items-start justify-start gap-3'>
         <h1 className='font-extrabold text-xl'>friendly&apos;s Restaurant</h1>
         <p className={`${RobotoFont.className}`}>
           Friendly&apos;s is a restaurant chain on the East Coast of the United
