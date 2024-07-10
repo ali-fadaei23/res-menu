@@ -22,18 +22,20 @@ export default function LanguageScreen() {
         >
           <div className='w-full mt-6 flex flex-row items-center justify-center gap-7'>
             <Image src={FlagGb} width={48} height={48} alt='Logo Language GB' />
-            <Link href={`/courses`}>
-              <div className='bg-neutral-200 hover:bg-neutral-300 py-3 rounded-lg w-60'>
-                English
-              </div>
+            <Link
+              className='bg-neutral-200 hover:bg-neutral-300 py-3 rounded-lg w-60'
+              href={`/courses`}
+            >
+              English
             </Link>
           </div>
           <div className='w-full mt-6 flex flex-row items-center justify-center gap-7'>
             <Image src={FlagNl} width={48} height={48} alt='Logo Language NL' />
-            <Link href={`/courses`}>
-              <div className='bg-neutral-200 hover:bg-neutral-300 py-3 rounded-lg w-60'>
-                Dutch
-              </div>
+            <Link
+              className='bg-neutral-200 hover:bg-neutral-300 py-3 rounded-lg w-60'
+              href={`/courses`}
+            >
+              Dutch
             </Link>
           </div>
         </div>

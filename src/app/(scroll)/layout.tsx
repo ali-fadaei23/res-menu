@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Providers } from "../providers";
 import localFont from "next/font/local";
 import Navbar from "@/components/navbar";
+import { NextUIProvider } from "@nextui-org/react";
 
 export const GothamFont = localFont({
   src: "../../assets/fonts/Gotham Pro Black.ttf",
@@ -18,15 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={`min-h-screen w-screen flex items-center justify-center ${GothamFont.className}`}
-      >
-        <Providers>
-          <Navbar />
-          {children}
-        </Providers>
-      </body>
-    </html>
+    <>
+      <Navbar />
+      <main>{children}</main>
+    </>
   );
 }

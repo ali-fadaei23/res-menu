@@ -15,46 +15,7 @@ import SoupsImage from "../assets/soups.jpg";
 import Link from "next/link";
 import { RobotoFont } from "@/app/page";
 
-// let category = [
-//   {
-//     id: "salads",
-//     href: "#",
-//     image: SaladsImage,
-//     label: "Salads",
-//   },
-//   {
-//     id: "starters",
-//     href: "#",
-//     image: StartersImage,
-//     label: "Starters",
-//   },
-//   {
-//     id: "entree",
-//     href: "#",
-//     image: EntreeImage,
-//     label: "Entree",
-//   },
-//   {
-//     id: "soups",
-//     href: "#",
-//     image: SoupsImage,
-//     label: "Soups",
-//   },
-//   {
-//     id: "drinks",
-//     href: "#",
-//     image: DrinksImage,
-//     label: "Drinks",
-//   },
-//   {
-//     id: "dessert",
-//     href: "#",
-//     image: DessertImage,
-//     label: "Dessert",
-//   },
-// ];
-
-const category = [
+export const category = [
   {
     id: "salads",
     label: "New York Style Pizza",
