@@ -11,15 +11,20 @@ export default function SingleCategory(props: {
     href: string;
     image: StaticImageData;
   }[];
+  title: string;
 }) {
   return (
-    <div
-      className={`w-full grid grid-cols-1 gap-5 px-2 ${RobotoFont.className}`}
-    >
+    <div className={`w-full grid grid-cols-1 gap-5 px-2`}>
+      <h1 className={`text-3xl`}>{props.title}</h1>
+
       {props.singleCategory.map((item) => (
-        <div key={item.id} id='home'>
-          <Link href={`#${item.id}`}>
-            <Card id={item.id} shadow='sm' isPressable>
+        <div
+          id={item.id}
+          className={`${RobotoFont.className}`}
+          key={`item-${item.id}`}
+        >
+          <Link href={item.href}>
+            <Card shadow='sm' isPressable>
               <CardBody className='w-full overflow p-0 '>
                 <Image
                   removeWrapper
@@ -30,7 +35,7 @@ export default function SingleCategory(props: {
                   src={item.image.src}
                 />
               </CardBody>
-              <CardFooter className='z-30 justify-center'>
+              <CardFooter className='justify-center'>
                 <div className='w-full flex flex-row items-center justify-between'>
                   <span className='text-lg font-semibold capitalize'>
                     {item.label}

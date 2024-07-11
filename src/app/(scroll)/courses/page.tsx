@@ -1,5 +1,6 @@
 import CoursesDetail from "@/components/courses-detail";
 import HeaderCourses from "@/components/header-courses";
+import { useParams } from "next/navigation";
 
 export default function Courses() {
   return (
