@@ -9,71 +9,147 @@ import StartersImage from "../assets/starters.jpg";
 import SoupsImage from "../assets/soups.jpg";
 import Category from "./category";
 import { RobotoFont } from "@/app/page";
+import { useState } from "react";
+import SingleCategory from "./single-category";
+
+let categoryData = [
+  {
+    id: "salads",
+    label: "salads",
+    href: "#",
+    image: SaladsImage,
+  },
+  {
+    id: "starters",
+    label: "starters",
+    href: "#",
+    image: StartersImage,
+  },
+  {
+    id: "entree",
+    label: "entree",
+    href: "#",
+    image: EntreeImage,
+  },
+  {
+    id: "soups",
+    label: "soups",
+    href: "#",
+    image: SoupsImage,
+  },
+  {
+    id: "salads",
+    label: "salads",
+    href: "#",
+    image: SaladsImage,
+  },
+  {
+    id: "drinks",
+    label: "drinks",
+    href: "#",
+    image: DrinksImage,
+  },
+];
+
+let data = [
+  {
+    id: "salads",
+    label: "Pizza New york Style",
+    price: "$5.26",
+    href: "#",
+    image: SaladsImage,
+  },
+  {
+    id: "starters",
+    label: "Pizza New york Style",
+    price: "$5.26",
+    href: "#",
+    image: StartersImage,
+  },
+  {
+    id: "entree",
+    label: "Pizza New york Style",
+    price: "$5.26",
+    href: "#",
+    image: EntreeImage,
+  },
+  {
+    id: "soups",
+    label: "Pizza New york Style",
+    price: "$5.26",
+    href: "#",
+    image: SoupsImage,
+  },
+  {
+    id: "salads",
+    label: "Pizza New york Style",
+    price: "$5.26",
+    href: "#",
+    image: SaladsImage,
+  },
+  {
+    id: "drinks",
+    label: "Pizza New york Style",
+    price: "$5.26",
+    href: "#",
+    image: DrinksImage,
+  },
+];
+
+let tabs = [
+  {
+    id: "home",
+    href: "#",
+    label: "Home",
+    content: <Category category={categoryData} />,
+  },
+  {
+    id: "salads",
+    href: "#",
+    label: "Salads",
+    content: <SingleCategory singleCategory={data} />,
+  },
+  {
+    id: "starters",
+    href: "#",
+    label: "Starters",
+    content: <SingleCategory singleCategory={data} />,
+  },
+  {
+    id: "entree",
+    href: "#",
+    label: "Entree",
+    content: <SingleCategory singleCategory={data} />,
+  },
+  {
+    id: "soups",
+    href: "#",
+    label: "Soups",
+    content: <SingleCategory singleCategory={data} />,
+  },
+  {
+    id: "drinks",
+    href: "#",
+    label: "Drinks",
+    content: <SingleCategory singleCategory={data} />,
+  },
+  {
+    id: "dessert",
+    href: "#",
+    label: "Dessert",
+    content: <SingleCategory singleCategory={data} />,
+  },
+];
 
 export default function CoursesDetail() {
+  // const [selected, setSelected] = useState();
   const pathname = usePathname();
-  const navHeight: number = document.getElementById("navbar")?.offsetHeight!;
-  console.log(navHeight);
-  let tabs = [
-    {
-      id: "home",
-      href: "#",
-      label: "Home",
-      content: <Category />,
-    },
-    {
-      id: "salads",
-      href: "#",
-      image: SaladsImage,
-      label: "Salads",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: "starters",
-      href: "#",
-      image: StartersImage,
-      label: "Starters",
-      content:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    },
-    {
-      id: "entree",
-      href: "#",
-      image: EntreeImage,
-      label: "Entree",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      id: "soups",
-      href: "#",
-      image: SoupsImage,
-      label: "Soups",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      id: "drinks",
-      href: "#",
-      image: DrinksImage,
-      label: "Drinks",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      id: "dessert",
-      href: "#",
-      image: DessertImage,
-      label: "Dessert",
-      content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-  ];
+
   return (
     <>
       <Tabs
         size='sm'
+        defaultSelectedKey={"home"}
         className={`w-full bg-white sticky top-14 z-20`}
         classNames={{
           tabList: "w-full relative rounded-none p-4",
@@ -87,10 +163,8 @@ export default function CoursesDetail() {
         items={tabs}
       >
         {(item) => (
-          <Tab href={`#${item.id}`} key={item.id} title={item.label}>
-            <div id='home'>
-              <Category key={item.id} />
-            </div>
+          <Tab key={item.id} title={item.label}>
+            {item.content}
           </Tab>
         )}
       </Tabs>
