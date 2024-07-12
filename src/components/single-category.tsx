@@ -1,7 +1,9 @@
+"use client";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { CardBody, Image, CardFooter, Card } from "@nextui-org/react";
 import { RobotoFont } from "@/app/page";
+import { useSearchParams } from "next/navigation";
 
 export default function SingleCategory(props: {
   singleCategory: {
@@ -13,15 +15,15 @@ export default function SingleCategory(props: {
   }[];
   title: string;
 }) {
+
   return (
     <div className={`w-full grid grid-cols-1 gap-5 px-2`}>
       <h1 className={`text-3xl`}>{props.title}</h1>
-
       {props.singleCategory.map((item) => (
         <div
           id={item.id}
           className={`${RobotoFont.className}`}
-          key={`item-${item.id}`}
+          key={`${item.id}`}
         >
           <Link href={item.href}>
             <Card shadow='sm' isPressable>

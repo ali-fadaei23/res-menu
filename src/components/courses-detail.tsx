@@ -17,42 +17,43 @@ import { RobotoFont } from "@/app/page";
 import { useCallback, useEffect, useState } from "react";
 import { Key } from "@react-types/shared";
 import SingleCategory from "./single-category";
+import Link from "next/link";
 
 let categories = [
   {
     id: "salads",
     label: "salads",
-    href: "#salads",
+    href: "/courses/salads",
     image: SaladsImage,
   },
   {
     id: "starters",
     label: "starters",
-    href: "#starters",
+    href: "/courses/starters",
     image: StartersImage,
   },
   {
     id: "entree",
     label: "entree",
-    href: "#entree",
+    href: "/courses/entree",
     image: EntreeImage,
   },
   {
     id: "soups",
     label: "soups",
-    href: "#soups",
+    href: "/courses/soups",
     image: SoupsImage,
   },
   {
     id: "dessert",
     label: "Dessert",
-    href: "#dessert",
+    href: "/courses/dessert",
     image: DessertImage,
   },
   {
     id: "drinks",
     label: "drinks",
-    href: "#drinks",
+    href: "/courses/drinks",
     image: DrinksImage,
   },
 ];
@@ -210,14 +211,14 @@ let data: Data = [
   {
     id: "home",
     key: "home",
-    href: "#home",
+    href: "/courses",
     label: "Home",
     content: <Category category={categories} />,
   },
   {
     id: "salads",
     key: "salads",
-    href: "#salads",
+    href: "/courses/salads",
     label: "Salads",
     content: (
       <SingleCategory title='Salads' singleCategory={dataCategories.salads} />
@@ -226,7 +227,7 @@ let data: Data = [
   {
     id: "starters",
     key: "starters",
-    href: "#starters",
+    href: "/courses/starters",
     label: "Starters",
     content: (
       <SingleCategory
@@ -238,7 +239,7 @@ let data: Data = [
   {
     id: "entree",
     key: "entree",
-    href: "#entree",
+    href: "/courses/entree",
     label: "Entree",
     content: (
       <SingleCategory title='Entree' singleCategory={dataCategories.entree} />
@@ -247,7 +248,7 @@ let data: Data = [
   {
     id: "soups",
     key: "soups",
-    href: "#soups",
+    href: "/courses/soups",
     label: "Soups",
     content: (
       <SingleCategory title='Soups' singleCategory={dataCategories.soups} />
@@ -256,7 +257,7 @@ let data: Data = [
   {
     id: "drinks",
     key: "drinks",
-    href: "#drinks",
+    href: "/courses/drinks",
     label: "Drinks",
     content: (
       <SingleCategory title='Drinks' singleCategory={dataCategories.drinks} />
@@ -265,7 +266,7 @@ let data: Data = [
   {
     id: "dessert",
     key: "dessert",
-    href: "#dessert",
+    href: "/courses/dessert",
     label: "Dessert",
     content: (
       <SingleCategory title='Dessert' singleCategory={dataCategories.dessert} />
@@ -274,22 +275,28 @@ let data: Data = [
 ];
 
 export default function CoursesDetail() {
-  const searchParams = useSearchParams();
-  const category = searchParams.get("category") ?? "home";
-  const [tabs, setTabs] = useState(data);
+  const pathname = usePathname();
+  const [selected, setSelected] = useState(pathname);
+  console.log(pathname);
+
   const router = useRouter();
-  const cb = useCallback(
-    (key: Key) => {
-      if (category !== key) router.push(`?category=${key}`, { scroll: false });
-    },
-    [router, category]
-  );
+  // const cb = useCallback(
+  //   (key: Key) => {
+  //     window.scrollTo({ behavior: "smooth", top: 0 });
+  //     router.push(`/${key}`, { scroll: false });
+  //     // if (category !== key) {
+  //     // }
+  //   },
+  //   [router, category]
+  // );
+
   return (
     <>
       <Tabs
         size='sm'
-        selectedKey={category}
-        onSelectionChange={cb}
+        id='tabs-categories'
+        selectedKey={selected}
+        onSelectionChange={() => setSelected}
         className={`w-full bg-white sticky top-14 z-20`}
         classNames={{
           tabList: "w-full relative rounded-none p-4",
@@ -300,11 +307,13 @@ export default function CoursesDetail() {
         variant='light'
         color='default'
         aria-label='Dynamic tabs'
-        items={tabs}
+        items={data}
       >
         {(item) => (
-          <Tab key={item.key} title={item.label}>
-            {item.content}
+          <Tab href={item.href} key={item.href} title={item.label}>
+            <Link key={item.href} href={item.href}>
+              {item.content}
+            </Link>
           </Tab>
         )}
       </Tabs>

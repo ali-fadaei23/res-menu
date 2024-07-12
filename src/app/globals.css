@@ -16,8 +16,13 @@ body {
   box-shadow: inset 0 0 200px 20px #000000;
 }
 
+#header-nav {
+  position: var(--position);
+}
+
 #navbar {
-  background-color: var(--background);
+  /* background-color: var(--background); */
+  /* background: rgba(255, 255, 255, 0); */
   /* transition: height 2s linear 1s;
   transition-delay: calc(var(--scroll) * -1s); */
   /* animation: rotate 1s linear infinite;
@@ -27,8 +32,12 @@ body {
   animation-fill-mode: both; */
 }
 
+/* .btn-waiter {
+  background-color: var(--button-background);
+} */
+
 .btn-nav {
-  color: var(--button-style);
+  /* color: var(--button-style); */
   /* transition: height 2s linear 1s;
   transition-delay: calc(var(--scroll) * -1s); */
   /* animation: rotate 1s linear infinite;
@@ -36,21 +45,21 @@ body {
   animation-delay: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: both; */
-   } 
+}
 
- /* #header-nav {
+/* #header-nav {
   position: var(--position); */
-  /* transition: height 2s linear 1s;
+/* transition: height 2s linear 1s;
   transition-delay: calc(var(--scroll) * -1s); */
-  /* animation: rotate 1s linear infinite;
+/* animation: rotate 1s linear infinite;
   animation-play-state: paused;
   animation-delay: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: both; */
-  /* }  */
+/* }  */
 
 
-  /* 
+/* 
 @keyframes rotate {
   to {
     opacity: var(--opacity);

@@ -42,30 +42,25 @@ export default function Category(props: {
       className={`w-full grid grid-cols-2 gap-5 px-2 ${RobotoFont.className}`}
     >
       {props.category.map((item) => (
-        <Card
-          key={item.id}
-          onClick={() => {
-            router.push(`?category=${item.id}`);
-          }}
-          shadow='sm'
-          isPressable
-        >
-          <CardBody className='w-full overflow p-0 '>
-            <Image
-              removeWrapper
-              shadow='sm'
-              radius='lg'
-              alt={item.label}
-              className='object-cover w-52 h-52'
-              src={item.image.src}
-            />
-          </CardBody>
-          <CardFooter className='text-small text-[#f0f0f0] absolute bottom-0 z-30 justify-center'>
-            <span className='text-lg font-semibold capitalize'>
-              {item.label}
-            </span>
-          </CardFooter>
-        </Card>
+        <Link key={item.id} href={item.href}>
+          <Card shadow='sm' isPressable>
+            <CardBody className='w-full overflow p-0 '>
+              <Image
+                removeWrapper
+                shadow='sm'
+                radius='lg'
+                alt={item.label}
+                className='object-cover w-52 h-52'
+                src={item.image.src}
+              />
+            </CardBody>
+            <CardFooter className='text-small text-[#f0f0f0] absolute bottom-0 z-30 justify-center'>
+              <span className='text-lg font-semibold capitalize'>
+                {item.label}
+              </span>
+            </CardFooter>
+          </Card>
+        </Link>
       ))}
     </div>
   );
