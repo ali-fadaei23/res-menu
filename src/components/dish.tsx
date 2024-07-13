@@ -2,7 +2,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Image, Tab, Tabs } from "@nextui-org/react";
+import { Divider, Image, Tab, Tabs } from "@nextui-org/react";
 import SaladsImage from "../assets/salads.jpg";
 import EntreeImage from "../assets/entree.jpg";
 import DrinksImage from "../assets/drinks.jpg";
@@ -29,7 +29,7 @@ export default function Dish() {
     dots: true,
     infinite: true,
     arrows: false,
-    centerPadding: "90px",
+    centerPadding: "50px",
     slidesToShow: 1,
     speed: 500,
   };
@@ -57,131 +57,114 @@ export default function Dish() {
       </Tabs>
       <div className='slider-container w-full'>
         <Slider {...settings}>
-          <div>
+          <div className='w-96 h-56 px-2'>
             <Image
               removeWrapper
               shadow='sm'
               radius='lg'
               alt='Dish Slider Image'
-              className='object-cover w-72 h-56'
+              className='object-cover w-96 h-56'
               src={SaladsImage.src}
             />
           </div>
-          <div>
+          <div className='w-96 h-56 px-2'>
             <Image
               removeWrapper
               shadow='sm'
               radius='lg'
               alt='Dish Slider Image'
-              className='object-cover w-72 h-56'
+              className='object-cover w-96 h-56'
               src={DrinksImage.src}
             />
           </div>
-          <div>
+          <div className='w-96 h-56 px-2'>
             <Image
               removeWrapper
               shadow='sm'
               radius='lg'
               alt='Dish Slider Image'
-              className='object-cover w-72 h-56'
+              className='object-cover w-96 h-56'
               src={DessertImage.src}
             />
           </div>
-          <div>
+          <div className='w-96 h-56 px-2'>
             <Image
               removeWrapper
               shadow='sm'
               radius='lg'
               alt='Dish Slider Image'
-              className='object-cover w-72 h-56'
+              className='object-cover w-96 h-56'
               src={DessertImage.src}
             />
           </div>
-          <div>
+          <div className='w-96 h-56 px-2'>
             <Image
               removeWrapper
               shadow='sm'
               radius='lg'
               alt='Dish Slider Image'
-              className='object-cover w-72 h-56'
+              className='object-cover w-96 h-56'
               src={StartersImage.src}
             />
           </div>
-          <div>
+          <div className='w-96 h-56 px-2'>
             <Image
               removeWrapper
               shadow='sm'
               radius='lg'
               alt='Dish Slider Image'
-              className='object-cover w-72 h-56'
+              className='object-cover w-96 h-56'
               src={EntreeImage.src}
             />
           </div>
         </Slider>
       </div>
+      <div className='text-left flex flex-col justify-center py-14 px-16'>
+        <h1 className='text-xl'>Title Dish</h1>
+        <p className={`${RobotoFont.className}`}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          suscipit libero vel lorem gravida, eu sodales velit sodales. Mauris a
+          mi quis nisl vehicula mollis convallis sed dolor. Quisque sit amet
+          cursus mi, in lacinia enim. Integer tincidunt dui id rhoncus ornare.
+          Duis ultricies, dolor id euismod interdum, sapien arcu rhoncus diam,
+          vel pharetra arcu diam eu eros.{" "}
+        </p>
+        <Divider className='my-5 h-[3px]' orientation='horizontal' />
+        <span className='text-md text-neutral-400'>Ingredients:</span>
+        <p className={`${RobotoFont.className}`}>
+          Maecenas eget maximus lorem. Donec a enim sed felis volutpat
+          elementum. Phasellus eget ullamcorper libero. Maecenas pulvinar nisi
+          ac urna volutpat, eu vulputate mauris accumsan. Quisque aliquam ipsum
+          sapien,
+        </p>
+        <Divider className='my-5 h-[3px]' orientation='horizontal' />
+        <span className='text-md text-neutral-400'>
+          Nutritional value of 100gr.
+        </span>
+        <p className={`${RobotoFont.className}`}>
+          <div className='flex flex-row items-center justify-between'>
+            <span>Calories</span>
+            <span className='font-bold'>219</span>
+          </div>
+          <div className='flex flex-row items-center justify-between'>
+            <span>Fats</span>
+            <span className='font-bold'>36</span>
+          </div>
+          <div className='flex flex-row items-center justify-between'>
+            <span>Carbs</span>
+            <span className='font-bold'>38</span>
+          </div>
+          <div className='flex flex-row items-center justify-between'>
+            <span>Proteins</span>
+            <span className='font-bold'>13</span>
+          </div>
+          <div className='flex flex-row items-center justify-between mt-5'>
+            <span>Weight:</span>
+            <span className='font-bold'>306 gr</span>
+          </div>
+        </p>
+        <Divider className='my-5 h-[3px]' orientation='horizontal' />
+      </div>
     </>
   );
-}
-
-{
-  /* <SwiperSlide>
-  <Image
-  removeWrapper
-  shadow='sm'
-  radius='lg'
-  alt='Dish Slider Image'
-  className='object-cover w-72 h-56'
-  src={SaladsImage.src}
-/>
-</SwiperSlide>
-<SwiperSlide>
-<Image
-  removeWrapper
-  shadow='sm'
-  radius='lg'
-  alt='Dish Slider Image'
-  className='object-cover w-72 h-56'
-  src={DrinksImage.src}
-/>
-</SwiperSlide>
-<SwiperSlide>
-<Image
-  removeWrapper
-  shadow='sm'
-  radius='lg'
-  alt='Dish Slider Image'
-  className='object-cover w-72 h-56'
-  src={DessertImage.src}
-/>
-</SwiperSlide>
-<SwiperSlide>
-<Image
-  removeWrapper
-  shadow='sm'
-  radius='lg'
-  alt='Dish Slider Image'
-  className='object-cover w-72 h-56'
-  src={SoupsImage.src}
-/>
-</SwiperSlide>
-<SwiperSlide>
-<Image
-  removeWrapper
-  shadow='sm'
-  radius='lg'
-  alt='Dish Slider Image'
-  className='object-cover w-72 h-56'
-  src={StartersImage.src}
-/>
-</SwiperSlide>
-<SwiperSlide>
-<Image
-  removeWrapper
-  shadow='sm'
-  radius='lg'
-  alt='Dish Slider Image'
-  className='object-cover w-72 h-56'
-  src={EntreeImage.src}
-/>
-</SwiperSlide> */
 }
