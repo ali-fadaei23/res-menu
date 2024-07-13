@@ -5,7 +5,7 @@ import FlagNl from "../assets/nl.svg";
 import Link from "next/link";
 import { RobotoFont } from "@/app/page";
 
-export default function LanguageScreen() {
+export default function Language() {
   return (
     <div className='w-full flex flex-col items-center gap-80'>
       <div className='mt-10'>

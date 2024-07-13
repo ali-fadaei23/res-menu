@@ -1,9 +1,9 @@
-import LanguageScreen from "@/components/language";
+import Language from "@/components/language";
 
-export default function Language() {
+export default function LanguageScreen() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-between'>
-      <LanguageScreen />
+      <Language />
     </main>
   );
 }

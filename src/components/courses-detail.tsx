@@ -23,37 +23,37 @@ let categories = [
   {
     id: "salads",
     label: "salads",
-    href: "/courses/salads",
+    href: "/courses/menu-category/salads",
     image: SaladsImage,
   },
   {
     id: "starters",
     label: "starters",
-    href: "/courses/starters",
+    href: "/courses/menu-category/starters",
     image: StartersImage,
   },
   {
     id: "entree",
     label: "entree",
-    href: "/courses/entree",
+    href: "/courses/menu-category/entree",
     image: EntreeImage,
   },
   {
     id: "soups",
     label: "soups",
-    href: "/courses/soups",
+    href: "/courses/menu-category/soups",
     image: SoupsImage,
   },
   {
     id: "dessert",
     label: "Dessert",
-    href: "/courses/dessert",
+    href: "/courses/menu-category/dessert",
     image: DessertImage,
   },
   {
     id: "drinks",
     label: "drinks",
-    href: "/courses/drinks",
+    href: "/courses/menu-category/drinks",
     image: DrinksImage,
   },
 ];
@@ -62,7 +62,7 @@ let dataCategories = {
   salads: [
     {
       id: "salads",
-      href: "#",
+      href: "/1",
       label: "Salads",
       price: "$5.26",
       image: SaladsImage,
@@ -218,7 +218,7 @@ let data: Data = [
   {
     id: "salads",
     key: "salads",
-    href: "/courses/salads",
+    href: "/courses/menu-category/salads",
     label: "Salads",
     content: (
       <SingleCategory title='Salads' singleCategory={dataCategories.salads} />
@@ -227,7 +227,7 @@ let data: Data = [
   {
     id: "starters",
     key: "starters",
-    href: "/courses/starters",
+    href: "/courses/menu-category/starters",
     label: "Starters",
     content: (
       <SingleCategory
@@ -239,7 +239,7 @@ let data: Data = [
   {
     id: "entree",
     key: "entree",
-    href: "/courses/entree",
+    href: "/courses/menu-category/entree",
     label: "Entree",
     content: (
       <SingleCategory title='Entree' singleCategory={dataCategories.entree} />
@@ -248,7 +248,7 @@ let data: Data = [
   {
     id: "soups",
     key: "soups",
-    href: "/courses/soups",
+    href: "/courses/menu-category/soups",
     label: "Soups",
     content: (
       <SingleCategory title='Soups' singleCategory={dataCategories.soups} />
@@ -257,7 +257,7 @@ let data: Data = [
   {
     id: "drinks",
     key: "drinks",
-    href: "/courses/drinks",
+    href: "/courses/menu-category/drinks",
     label: "Drinks",
     content: (
       <SingleCategory title='Drinks' singleCategory={dataCategories.drinks} />
@@ -266,7 +266,7 @@ let data: Data = [
   {
     id: "dessert",
     key: "dessert",
-    href: "/courses/dessert",
+    href: "/courses/menu-category/dessert",
     label: "Dessert",
     content: (
       <SingleCategory title='Dessert' singleCategory={dataCategories.dessert} />

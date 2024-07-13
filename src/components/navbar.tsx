@@ -50,7 +50,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll, false);
     };
-  }, []);
+  });
   return (
     <header id='header-nav' className={`z-50 top-0`}>
       <nav className={``}>
