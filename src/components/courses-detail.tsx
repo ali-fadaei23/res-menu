@@ -62,21 +62,21 @@ let dataCategories = {
   salads: [
     {
       id: "salads",
-      href: "/1",
+      href: "/courses/menu-category/salads/1",
       label: "Salads",
       price: "$5.26",
       image: SaladsImage,
     },
     {
       id: "salads",
-      href: "#",
+      href: "/courses/menu-category/salads/2",
       label: "Salads",
       price: "$5.26",
       image: SaladsImage,
     },
     {
       id: "salads",
-      href: "#",
+      href: "/courses/menu-category/salads/3",
       label: "Salads",
       price: "$5.26",
       image: SaladsImage,
@@ -85,21 +85,21 @@ let dataCategories = {
   starters: [
     {
       id: "starters",
-      href: "#",
+      href: "/courses/menu-category/starters/4",
       label: "Starters",
       price: "$5.26",
       image: StartersImage,
     },
     {
       id: "starters",
-      href: "#",
+      href: "/courses/menu-category/starters/12",
       label: "Starters",
       price: "$5.26",
       image: StartersImage,
     },
     {
       id: "starters",
-      href: "#",
+      href: "/courses/menu-category/starters/67",
       label: "Starters",
       price: "$5.26",
       image: StartersImage,
@@ -108,21 +108,21 @@ let dataCategories = {
   entree: [
     {
       id: "entree",
-      href: "#",
+      href: "/courses/menu-category/entree/45",
       label: "Entree",
       price: "$5.26",
       image: EntreeImage,
     },
     {
       id: "entree",
-      href: "#",
+      href: "/courses/menu-category/entree/45",
       label: "Entree",
       price: "$5.26",
       image: EntreeImage,
     },
     {
       id: "entree",
-      href: "#",
+      href: "/courses/menu-category/entree/45",
       label: "Entree",
       price: "$5.26",
       image: EntreeImage,
@@ -131,21 +131,21 @@ let dataCategories = {
   soups: [
     {
       id: "soups",
-      href: "#",
+      href: "/courses/menu-category/soups/45",
       label: "Soups",
       price: "$5.26",
       image: SoupsImage,
     },
     {
       id: "soups",
-      href: "#",
+      href: "/courses/menu-category/soups/45",
       label: "Soups",
       price: "$5.26",
       image: SoupsImage,
     },
     {
       id: "soups",
-      href: "#",
+      href: "/courses/menu-category/soups/45",
       label: "Soups",
       price: "$5.26",
       image: SoupsImage,
@@ -154,21 +154,21 @@ let dataCategories = {
   dessert: [
     {
       id: "dessert",
-      href: "#",
+      href: "/courses/menu-category/dessert/5",
       label: "Dessert",
       price: "$5.26",
       image: DessertImage,
     },
     {
       id: "dessert",
-      href: "#",
+      href: "/courses/menu-category/dessert/49",
       label: "Dessert",
       price: "$5.26",
       image: DessertImage,
     },
     {
       id: "dessert",
-      href: "#",
+      href: "/courses/menu-category/dessert/44",
       label: "Dessert",
       price: "$5.26",
       image: DessertImage,
@@ -177,21 +177,21 @@ let dataCategories = {
   drinks: [
     {
       id: "drinks",
-      href: "#",
+      href: "/courses/menu-category/drinks/47",
       label: "Drinks",
       price: "$5.26",
       image: DrinksImage,
     },
     {
       id: "drinks",
-      href: "#",
+      href: "/courses/menu-category/drinks/42",
       label: "Drinks",
       price: "$5.26",
       image: DrinksImage,
     },
     {
       id: "drinks",
-      href: "#",
+      href: "/courses/menu-category/drinks/41",
       label: "Drinks",
       price: "$5.26",
       image: DrinksImage,
@@ -207,7 +207,7 @@ type Data = {
   content: JSX.Element;
 }[];
 
-let data: Data = [
+export let data: Data = [
   {
     id: "home",
     key: "home",

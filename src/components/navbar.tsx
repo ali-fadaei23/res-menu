@@ -58,9 +58,9 @@ export default function Navbar() {
           id='navbar'
           className={`w-full ${
             pathname.startsWith("/courses/")
-              ? "bg-white justify-between"
-              : "bg-[--background] justify-end"
-          } absolute top-0 flex lg:flex-row gap-4 mr-2 py-3 px-2`}
+              ? "bg-white justify-between relative top-0"
+              : "bg-[--background] justify-end absolute top-0"
+          }  flex lg:flex-row gap-4 mr-2 py-3 px-2`}
         >
           <div>
             {pathname.startsWith("/courses/") ? (
