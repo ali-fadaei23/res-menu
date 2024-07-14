@@ -2,13 +2,14 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Divider, Image, Tab, Tabs } from "@nextui-org/react";
+import { Button, Divider, Image, Tab, Tabs } from "@nextui-org/react";
 import SaladsImage from "../assets/salads.jpg";
 import EntreeImage from "../assets/entree.jpg";
 import DrinksImage from "../assets/drinks.jpg";
 import DessertImage from "../assets/dessert.jpg";
 import StartersImage from "../assets/starters.jpg";
 import SoupsImage from "../assets/soups.jpg";
+import { BsPlus, BsDash } from "react-icons/bs";
 import CoursesDetail, { data } from "./courses-detail";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -119,7 +120,7 @@ export default function Dish() {
           </div>
         </Slider>
       </div>
-      <div className='text-left flex flex-col justify-center py-14 px-16'>
+      <section className='text-left flex flex-col justify-center py-14 px-16'>
         <h1 className='text-xl'>Title Dish</h1>
         <p className={`${RobotoFont.className}`}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
@@ -135,35 +136,73 @@ export default function Dish() {
           Maecenas eget maximus lorem. Donec a enim sed felis volutpat
           elementum. Phasellus eget ullamcorper libero. Maecenas pulvinar nisi
           ac urna volutpat, eu vulputate mauris accumsan. Quisque aliquam ipsum
-          sapien,
+          sapien
         </p>
         <Divider className='my-5 h-[3px]' orientation='horizontal' />
         <span className='text-md text-neutral-400'>
           Nutritional value of 100gr.
         </span>
         <p className={`${RobotoFont.className}`}>
-          <div className='flex flex-row items-center justify-between'>
+          <span className='flex flex-row items-center justify-between'>
             <span>Calories</span>
             <span className='font-bold'>219</span>
-          </div>
-          <div className='flex flex-row items-center justify-between'>
+          </span>
+          <span className='flex flex-row items-center justify-between'>
             <span>Fats</span>
             <span className='font-bold'>36</span>
-          </div>
-          <div className='flex flex-row items-center justify-between'>
+          </span>
+          <span className='flex flex-row items-center justify-between'>
             <span>Carbs</span>
             <span className='font-bold'>38</span>
-          </div>
-          <div className='flex flex-row items-center justify-between'>
+          </span>
+          <span className='flex flex-row items-center justify-between'>
             <span>Proteins</span>
             <span className='font-bold'>13</span>
-          </div>
-          <div className='flex flex-row items-center justify-between mt-5'>
+          </span>
+          <span className='flex flex-row items-center justify-between mt-5'>
             <span>Weight:</span>
-            <span className='font-bold'>306 gr</span>
-          </div>
+            <span className='font-bold'>306 gr.</span>
+          </span>
         </p>
         <Divider className='my-5 h-[3px]' orientation='horizontal' />
+        <span className='text-md text-neutral-400'>Potential allergens:</span>
+        <p className={`${RobotoFont.className}`}>
+          Maecenas pulvinar nisi ac urna volutpat, eu vulputate mauris accumsan.
+        </p>
+      </section>
+      <div className='bg-neutral-100 w-full flex items-center justify-between pb-10 pt-4 px-4 border-t-1 border-neutral-300'>
+        <div className='flex items-center justify-center flex-row gap-4'>
+          <Button
+            radius='sm'
+            className='text-3xl font-semibold'
+            type='button'
+            isIconOnly
+          >
+            <BsDash />
+          </Button>
+          <span>20</span>
+          <Button
+            radius='sm'
+            className='text-3xl font-semibold'
+            type='button'
+            isIconOnly
+          >
+            <BsPlus />
+          </Button>
+        </div>
+        <div>
+          <span>$200</span>
+        </div>
+        <div>
+          <Button
+            radius='sm'
+            className={`bg-gray-800 px-14 text-[#f0f0f0] ${RobotoFont.className}`}
+            text-white
+            type='button'
+          >
+            Add
+          </Button>
+        </div>
       </div>
     </>
   );

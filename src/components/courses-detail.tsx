@@ -311,9 +311,7 @@ export default function CoursesDetail() {
       >
         {(item) => (
           <Tab href={item.href} key={item.href} title={item.label}>
-            <Link key={item.href} href={item.href}>
-              {item.content}
-            </Link>
+            {item.content}
           </Tab>
         )}
       </Tabs>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
+import { Providers } from "./providers";
 
 export const GothamFont = localFont({
   src: "../assets/fonts/Gotham Pro Black.ttf",
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body
         className={`min-h-screen w-[480px] mx-auto border-x-1 ${GothamFont.className}`}
       >
-        <NextUIProvider className='w-full'>{children}</NextUIProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

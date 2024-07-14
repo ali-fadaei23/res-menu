@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import RestaurantLogo from "../assets/friendly-s-restaurant.svg";
 import BrandLogo from "../assets/wix-company-icon.svg";
@@ -5,8 +6,9 @@ import { TbSquareRoundedChevronsRightFilled } from "react-icons/tb";
 import Link from "next/link";
 
 export default function Splash() {
+  const { hasMounted } = useMounted();
   return (
-    <div className='w-full flex flex-col items-center gap-36'>
+    <main className='w-full flex flex-col items-center gap-36'>
       <Image
         className='mt-10'
         src={BrandLogo}
@@ -21,17 +23,30 @@ export default function Splash() {
         height={300}
         alt='Logo Restaurant'
       />
-      <div className='w-full text-center flex flex-col gap-8'>
+
+      <p className='w-full text-center flex flex-col gap-8'>
         <span className='text-xl'>Table #1</span>
-        <p className='flex flex-col text-2xl'>
+        <span className='flex flex-col text-2xl'>
           Crafted menu<span>experiance.</span>
-        </p>
-        <div className='w-full flex items-center justify-end'>
+        </span>
+        <span className='w-full flex items-center justify-end'>
           <Link className='mr-4 hover:text-gray-800' href={"/page-language"}>
             <TbSquareRoundedChevronsRightFilled className='text-5xl' />
           </Link>
-        </div>
-      </div>
-    </div>
+        </span>
+      </p>
+    </main>
   );
 }
+
+import { useEffect, useState } from "react";
+
+export const useMounted = (): { hasMounted: boolean } => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  return { hasMounted };
+};
