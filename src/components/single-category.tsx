@@ -9,13 +9,12 @@ export default function SingleCategory(props: {
   singleCategory: {
     id: string;
     label: string;
-    price: string;
+    price: number;
     href: string;
     image: StaticImageData;
   }[];
   title: string;
 }) {
-
   return (
     <div className={`w-full grid grid-cols-1 gap-5 px-2`}>
       <h1 className={`text-3xl`}>{props.title}</h1>
@@ -43,7 +42,7 @@ export default function SingleCategory(props: {
                     {item.label}
                   </span>
                   <span className='text-lg font-semibold text-neutral-500'>
-                    {item.price}
+                    {`$${item.price}`}
                   </span>
                 </div>
               </CardFooter>

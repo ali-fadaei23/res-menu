@@ -10,14 +10,34 @@ import DessertImage from "../assets/dessert.jpg";
 import StartersImage from "../assets/starters.jpg";
 import SoupsImage from "../assets/soups.jpg";
 import { BsPlus, BsDash } from "react-icons/bs";
-import CoursesDetail, { data } from "./courses-detail";
+import CoursesDetail, { data, dataCategories } from "./courses-detail";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { RobotoFont } from "@/app/page";
 
-export default function Dish() {
+export default function Dish(props: {
+  dish: { id: string; label: string; price: number };
+}) {
   const pathname = usePathname();
   const [selected, setSelected] = useState(RemoveLastDirectoryPartOf(pathname));
+  const dishprice = 5.25;
+  const [count, setcount] = useState(0);
+  const [price, setprice] = useState(0);
+
+  function handleIncrease() {
+    setcount((prev) => prev + 1);
+    setprice(price + dishprice);
+  }
+  function handleDecrease() {
+    if (count <= 0) {
+      setcount(0);
+      setprice(0);
+    } else {
+      setcount((prev) => prev - 1);
+      setprice(price - dishprice);
+    }
+  }
+
   function RemoveLastDirectoryPartOf(the_url: string) {
     let the_arr = the_url.split("/");
     the_arr.pop();
@@ -120,8 +140,11 @@ export default function Dish() {
           </div>
         </Slider>
       </div>
-      <section className='text-left flex flex-col justify-center py-14 px-16'>
-        <h1 className='text-xl'>Title Dish</h1>
+      <section
+        id={props.dish.id}
+        className='text-left flex flex-col justify-center py-14 px-16'
+      >
+        <h1 className='text-xl capitalize'>{props.dish.label}</h1>
         <p className={`${RobotoFont.className}`}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
           suscipit libero vel lorem gravida, eu sodales velit sodales. Mauris a
@@ -173,6 +196,7 @@ export default function Dish() {
       <div className='bg-neutral-100 w-full flex items-center justify-between pb-10 pt-4 px-4 border-t-1 border-neutral-300'>
         <div className='flex items-center justify-center flex-row gap-4'>
           <Button
+            onClick={handleDecrease}
             radius='sm'
             className='text-3xl font-semibold'
             type='button'
@@ -180,8 +204,9 @@ export default function Dish() {
           >
             <BsDash />
           </Button>
-          <span>20</span>
+          <span className=''>{count}</span>
           <Button
+            onClick={handleIncrease}
             radius='sm'
             className='text-3xl font-semibold'
             type='button'
@@ -190,8 +215,8 @@ export default function Dish() {
             <BsPlus />
           </Button>
         </div>
-        <div>
-          <span>$200</span>
+        <div className='w-12'>
+          <span>{`$${props.dish.price}`}</span>
         </div>
         <div>
           <Button

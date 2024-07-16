@@ -12,10 +12,6 @@ import React, { CSSProperties } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  // .split("/");
-  // const route = pathname[pathname.length - 1];
-  console.log(pathname.startsWith("/courses/"));
-
   const handleScroll = () => {
     const headerHeight = document.getElementById("courses")?.offsetHeight!;
     document.body.style.setProperty(
