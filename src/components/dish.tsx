@@ -2,7 +2,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Button, Divider, Image, Tab, Tabs } from "@nextui-org/react";
+import { Button, Divider, image, Image, Tab, Tabs } from "@nextui-org/react";
 import SaladsImage from "../assets/salads.jpg";
 import EntreeImage from "../assets/entree.jpg";
 import DrinksImage from "../assets/drinks.jpg";
@@ -14,27 +14,37 @@ import CoursesDetail, { data, dataCategories } from "./courses-detail";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { RobotoFont } from "@/app/page";
+import { useCart } from "@/shared/cart-context";
 
 export default function Dish(props: {
   dish: { id: string; label: string; price: number };
 }) {
+  const cart = useCart();
+  let { id, label, price } = props.dish;
   const pathname = usePathname();
   const [selected, setSelected] = useState(RemoveLastDirectoryPartOf(pathname));
-  const dishprice = 5.25;
   const [count, setcount] = useState(0);
-  const [price, setprice] = useState(0);
+  const [dishPrice, setDishprice] = useState(0);
+
+  const cartItem = {
+    id,
+    label,
+    price,
+    image: StartersImage,
+    num: count,
+  };
 
   function handleIncrease() {
     setcount((prev) => prev + 1);
-    setprice(price + dishprice);
+    setDishprice(dishPrice + price);
   }
   function handleDecrease() {
     if (count <= 0) {
       setcount(0);
-      setprice(0);
+      setDishprice(0);
     } else {
       setcount((prev) => prev - 1);
-      setprice(price - dishprice);
+      setDishprice(dishPrice - price);
     }
   }
 
@@ -141,10 +151,10 @@ export default function Dish(props: {
         </Slider>
       </div>
       <section
-        id={props.dish.id}
+        id={id}
         className='text-left flex flex-col justify-center py-14 px-16'
       >
-        <h1 className='text-xl capitalize'>{props.dish.label}</h1>
+        <h1 className='text-xl capitalize'>{label}</h1>
         <p className={`${RobotoFont.className}`}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
           suscipit libero vel lorem gravida, eu sodales velit sodales. Mauris a
@@ -216,18 +226,32 @@ export default function Dish(props: {
           </Button>
         </div>
         <div className='w-12'>
-          <span>{`$${props.dish.price}`}</span>
+          <span>{`$${Number(dishPrice.toFixed(2))}`}</span>
         </div>
-        <div>
-          <Button
-            radius='sm'
-            className={`bg-gray-800 px-14 text-[#f0f0f0] ${RobotoFont.className}`}
-            text-white
-            type='button'
-          >
-            Add
-          </Button>
-        </div>
+        {count <= 0 ? (
+          <div>
+            <Button
+              isDisabled
+              radius='sm'
+              className={`bg-gray-800 px-14 text-[#f0f0f0] ${RobotoFont.className}`}
+              text-white
+              type='button'
+            >
+              Add
+            </Button>
+          </div>
+        ) : (
+          <div>
+            <Button
+              radius='sm'
+              className={`bg-gray-800 px-14 text-[#f0f0f0] ${RobotoFont.className}`}
+              text-white
+              type='button'
+            >
+              Add
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );
