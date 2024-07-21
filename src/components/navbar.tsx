@@ -9,9 +9,11 @@ import { usePathname } from "next/navigation";
 import { MdChevronLeft } from "react-icons/md";
 import { Button } from "@nextui-org/react";
 import React, { CSSProperties } from "react";
+import { useCart } from "@/shared/cart-context";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const cart = useCart();
   const handleScroll = () => {
     const headerHeight = document.getElementById("courses")?.offsetHeight!;
     document.body.style.setProperty(
@@ -92,6 +94,8 @@ export default function Navbar() {
                 pathname.startsWith("/courses/")
                   ? "text-black bg-white"
                   : "text-[--button-style] bg-[#ffffff30]"
+              } ${
+                cart?.cartItems.length! > 0 ? "bg-[#7dd031] text-white" : ""
               } backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
             >
               <RiShoppingBasket2Line />

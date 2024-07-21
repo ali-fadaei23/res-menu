@@ -26,24 +26,42 @@ export default function Dish(props: {
   const [count, setcount] = useState(0);
   const [dishPrice, setDishprice] = useState(0);
 
+  const reducer = (...arr: any[]) => {
+    const res: any[] = [];
+    arr.forEach((v) => {
+      const i = res.findIndex((u) => u.id === v.id);
+      if (!res[i]) res.push(v);
+      else res[i].num++;
+    });
+    return res;
+  };
+  const numItems = cart?.cartItems.find((v) => v.id === id)?.num ?? 0;
   const cartItem = {
     id,
     label,
     price,
     image: StartersImage,
-    num: count,
+    num: 1,
   };
+  console.log(cart?.cartItems);
 
   function handleIncrease() {
-    setcount((prev) => prev + 1);
+    cart?.setCartItems((prev) =>
+      reducer(...structuredClone([...prev, cartItem]))
+    );
     setDishprice(dishPrice + price);
   }
   function handleDecrease() {
-    if (count <= 0) {
-      setcount(0);
+    if (numItems <= 0) {
       setDishprice(0);
     } else {
-      setcount((prev) => prev - 1);
+      cart?.setCartItems((prev) => {
+        const state = prev.map((v) => ({ ...v }));
+        const i = state.findIndex((v) => v.id === cartItem.id);
+        if (state[i].num > 1) state[i].num--;
+        else if (state[i].num === 1) state.splice(i, 1);
+        return state;
+      });
       setDishprice(dishPrice - price);
     }
   }
@@ -214,7 +232,7 @@ export default function Dish(props: {
           >
             <BsDash />
           </Button>
-          <span className=''>{count}</span>
+          <span className=''>{numItems}</span>
           <Button
             onClick={handleIncrease}
             radius='sm'
@@ -228,30 +246,6 @@ export default function Dish(props: {
         <div className='w-12'>
           <span>{`$${Number(dishPrice.toFixed(2))}`}</span>
         </div>
-        {count <= 0 ? (
-          <div>
-            <Button
-              isDisabled
-              radius='sm'
-              className={`bg-gray-800 px-14 text-[#f0f0f0] ${RobotoFont.className}`}
-              text-white
-              type='button'
-            >
-              Add
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <Button
-              radius='sm'
-              className={`bg-gray-800 px-14 text-[#f0f0f0] ${RobotoFont.className}`}
-              text-white
-              type='button'
-            >
-              Add
-            </Button>
-          </div>
-        )}
       </div>
     </>
   );
