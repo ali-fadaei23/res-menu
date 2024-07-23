@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Navbar from "@/components/navbar";
-import CartProvider, { useCart } from "@/shared/cart-context";
+import AppProvider from "@/shared/context";
 
 export const GothamFont = localFont({
   src: "../../assets/fonts/Gotham Pro Black.ttf",
@@ -18,11 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <CartProvider>
+    <AppProvider>
       <main>
         <Navbar />
         {children}
       </main>
-    </CartProvider>
+    </AppProvider>
   );
 }

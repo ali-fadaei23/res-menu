@@ -24,8 +24,8 @@ export default function SingleCategory(props: {
           className={`${RobotoFont.className}`}
           key={`${item.id}`}
         >
-          <Link href={item.href}>
-            <Card shadow='sm' isPressable>
+          <Card shadow='sm' isPressable>
+            <Link href={item.href}>
               <CardBody className='w-full overflow p-0 '>
                 <Image
                   removeWrapper
@@ -46,8 +46,8 @@ export default function SingleCategory(props: {
                   </span>
                 </div>
               </CardFooter>
-            </Card>
-          </Link>
+            </Link>
+          </Card>
         </div>
       ))}
     </div>

@@ -6,7 +6,6 @@ import { TbSquareRoundedChevronsRightFilled } from "react-icons/tb";
 import Link from "next/link";
 
 export default function Splash() {
-  const { hasMounted } = useMounted();
   return (
     <main className='w-full flex flex-col items-center gap-36'>
       <Image
@@ -38,15 +37,3 @@ export default function Splash() {
     </main>
   );
 }
-
-import { useEffect, useState } from "react";
-
-export const useMounted = (): { hasMounted: boolean } => {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  return { hasMounted };
-};

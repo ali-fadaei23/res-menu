@@ -14,11 +14,12 @@ import StartersImage from "../assets/starters.jpg";
 import SoupsImage from "../assets/soups.jpg";
 import Category from "./category";
 import { RobotoFont } from "@/app/page";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Key } from "@react-types/shared";
 import SingleCategory from "./single-category";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
+import { useData } from "@/shared/context";
 
 let categories = [
   {
@@ -276,11 +277,36 @@ export let data: Data = [
 ];
 
 export default function CoursesDetail() {
+  const DATA = useData();
   const pathname = usePathname();
-  const [selected, setSelected] = useState(pathname);
-  console.log(pathname);
+  // const [selected, setSelected] = useState(pathname);
+  // const router = useRouter();
+  // console.log(pathname);
 
-  const router = useRouter();
+  const handleTabClick = (index: number) => {
+    DATA?.setActiveTab(index);
+  };
+
+  const renderTabs = () => {
+    return data.map((tab, index) => {
+      return (
+        <Link
+          href={tab.href}
+          id={tab.id}
+          key={tab.key}
+          className={
+             tab.href === pathname
+              ? "bg-black text-white rounded-full py-1 px-3"
+              : "text-neutral-400 hover:text-neutral-500"
+          }
+          onClick={() => handleTabClick(index)}
+        >
+          {tab.label}
+        </Link>
+      );
+    });
+  };
+
   // const cb = useCallback(
   //   (key: Key) => {
   //     window.scrollTo({ behavior: "smooth", top: 0 });
@@ -293,29 +319,40 @@ export default function CoursesDetail() {
 
   return (
     <>
-      <Tabs
-        size='sm'
-        id='tabs-categories'
-        selectedKey={selected}
-        onSelectionChange={() => setSelected}
-        className={`w-full bg-white sticky top-14 z-20`}
-        classNames={{
-          tabList: "w-full relative rounded-none p-4",
-          cursor: "w-full bg-gray-800 font-semibold rounded-full",
-          tab: "w-full py-4",
-          tabContent: `group-data-[selected=true]:text-white text-neutral-400 ${RobotoFont.className}`,
-        }}
-        variant='light'
-        color='default'
-        aria-label='Dynamic tabs'
-        items={data}
+      <div
+        className={`w-full flex flex-col items-center justify-center ${RobotoFont.className}`}
       >
-        {(item) => (
-          <Tab href={item.href} key={item.href} title={item.label}>
-            {item.content}
-          </Tab>
-        )}
-      </Tabs>
+        <div className='sticky top-14 z-20  bg-white w-full text-sm flex flex-row items-center justify-between px-2 py-5'>
+          {renderTabs()}
+        </div>
+        <div className='tab-content'>{data[DATA?.activeTab!].content}</div>
+      </div>
     </>
   );
+}
+
+{
+  /* <Tabs
+size='sm'
+id='tabs-categories'
+selectedKey={selected}
+onSelectionChange={() => setSelected}
+className={`w-full bg-white sticky top-14 z-20`}
+classNames={{
+  tabList: "w-full relative rounded-none p-4",
+  cursor: "w-full bg-gray-800 font-semibold rounded-full",
+  tab: "w-full py-4",
+  tabContent: `group-data-[selected=true]:text-white text-neutral-400`,
+}}
+variant='light'
+color='default'
+aria-label='Dynamic tabs'
+items={data}
+>
+{(item) => (
+  <Tab href={item.href} key={item.href} title={item.label}>
+    {item.content}
+  </Tab>
+)}
+</Tabs> */
 }

@@ -12,18 +12,19 @@ import SoupsImage from "../assets/soups.jpg";
 import { BsPlus, BsDash } from "react-icons/bs";
 import CoursesDetail, { data, dataCategories } from "./courses-detail";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { RobotoFont } from "@/app/page";
-import { useCart } from "@/shared/cart-context";
+import Link from "next/link";
+import { useData } from "@/shared/context";
 
 export default function Dish(props: {
   dish: { id: string; label: string; price: number };
 }) {
-  const cart = useCart();
+  const DATA = useData();
   let { id, label, price } = props.dish;
   const pathname = usePathname();
   const [selected, setSelected] = useState(RemoveLastDirectoryPartOf(pathname));
-  const [count, setcount] = useState(0);
+  // const [count, setcount] = useState(0);
   const [dishPrice, setDishprice] = useState(0);
 
   const reducer = (...arr: any[]) => {
@@ -35,7 +36,7 @@ export default function Dish(props: {
     });
     return res;
   };
-  const numItems = cart?.cartItems.find((v) => v.id === id)?.num ?? 0;
+  const numItems = DATA?.cartItems.find((v) => v.id === id)?.num ?? 0;
   const cartItem = {
     id,
     label,
@@ -43,19 +44,19 @@ export default function Dish(props: {
     image: StartersImage,
     num: 1,
   };
-  console.log(cart?.cartItems);
 
   function handleIncrease() {
-    cart?.setCartItems((prev) =>
+    DATA?.setCartItems((prev) =>
       reducer(...structuredClone([...prev, cartItem]))
     );
     setDishprice(dishPrice + price);
   }
+
   function handleDecrease() {
     if (numItems <= 0) {
       setDishprice(0);
     } else {
-      cart?.setCartItems((prev) => {
+      DATA?.setCartItems((prev) => {
         const state = prev.map((v) => ({ ...v }));
         const i = state.findIndex((v) => v.id === cartItem.id);
         if (state[i].num > 1) state[i].num--;
@@ -82,28 +83,39 @@ export default function Dish(props: {
     slidesToShow: 1,
     speed: 500,
   };
+  const handleTabClick = (index: number) => {
+    DATA?.setActiveTab(index);
+  };
+
+  const renderTabs = () => {
+    return data.map((tab, index) => {
+      return (
+        <Link
+          id={tab.id}
+          key={tab.key}
+          href={tab.href}
+          className={
+            selected === tab.href
+              ? "bg-black font-semibold text-white rounded-full py-1 px-4"
+              : "text-neutral-400 hover:text-neutral-500"
+          }
+          onClick={() => handleTabClick(index)}
+        >
+          {tab.label}
+        </Link>
+      );
+    });
+  };
 
   return (
     <>
-      <Tabs
-        size='sm'
-        id='tabs-categories'
-        selectedKey={selected}
-        onSelectionChange={() => setSelected}
-        className={`w-full bg-white sticky top-14 z-20`}
-        classNames={{
-          tabList: "w-full relative rounded-none p-4",
-          cursor: "w-full bg-gray-800 font-semibold rounded-full",
-          tab: "w-full py-4",
-          tabContent: `group-data-[selected=true]:text-white text-neutral-400 ${RobotoFont.className}`,
-        }}
-        variant='light'
-        color='default'
-        aria-label='Dynamic tabs'
-        items={data}
+      <div
+        className={`w-full flex flex-col items-center justify-between px-2  ${RobotoFont.className}`}
       >
-        {(item) => <Tab href={item.href} key={item.href} title={item.label} />}
-      </Tabs>
+        <div className='bg-white w-full text-sm flex flex-row items-center justify-between py-5'>
+          {renderTabs()}
+        </div>
+      </div>
       <div className='slider-container w-full'>
         <Slider {...settings}>
           <div className='w-96 h-56 px-2'>
@@ -250,3 +262,23 @@ export default function Dish(props: {
     </>
   );
 }
+
+// <Tabs
+// size='sm'
+// id='tabs-categories'
+// selectedKey={selected}
+// onSelectionChange={() => setSelected}
+// className={`w-full bg-white sticky top-14 z-20`}
+// classNames={{
+//   tabList: "w-full relative rounded-none p-4",
+//   cursor: "w-full bg-gray-800 font-semibold rounded-full",
+//   tab: "w-full py-4",
+//   tabContent: `group-data-[selected=true]:text-white text-neutral-400 ${RobotoFont.className}`,
+// }}
+// variant='light'
+// color='default'
+// aria-label='Dynamic tabs'
+// items={data}
+// >
+// {(item) => <Tab href={item.href} key={item.href} title={item.label} />}
+// </Tabs>

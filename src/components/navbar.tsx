@@ -9,11 +9,11 @@ import { usePathname } from "next/navigation";
 import { MdChevronLeft } from "react-icons/md";
 import { Button } from "@nextui-org/react";
 import React, { CSSProperties } from "react";
-import { useCart } from "@/shared/cart-context";
+import { useData } from "@/shared/context";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const cart = useCart();
+  const DATA = useData();
   const handleScroll = () => {
     const headerHeight = document.getElementById("courses")?.offsetHeight!;
     document.body.style.setProperty(
@@ -55,34 +55,34 @@ export default function Navbar() {
         <div
           id='navbar'
           className={`w-full ${
-            pathname.startsWith("/courses/")
-              ? "bg-white justify-between relative top-0"
-              : "bg-[--background] justify-end absolute top-0"
+            pathname === "/courses"
+              ? "bg-[--background] justify-end absolute top-0"
+              : "bg-white justify-between relative top-0"
           }  flex lg:flex-row gap-4 mr-2 py-3 px-2`}
         >
           <div>
-            {pathname.startsWith("/courses/") ? (
+            {pathname === "/courses" ? null : (
               <Button
                 isIconOnly
                 type='button'
                 className={` ${
-                  pathname.startsWith("/courses/")
-                    ? "text-black bg-white"
-                    : "text-[--button-style] bg-[--button-background]"
+                  pathname === "/courses"
+                    ? "text-[--button-style] bg-[--button-background]"
+                    : "text-black bg-white"
                 } backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
               >
                 <MdChevronLeft />
               </Button>
-            ) : null}
+            )}
           </div>
           <div className='flex flex-row justify-end items-center gap-3'>
             <Button
               isIconOnly
               type='button'
               className={`btn-nav ${
-                pathname.startsWith("/courses/")
-                  ? "text-black bg-white"
-                  : "text-[--button-style] bg-[--button-background]"
+                pathname === "/courses"
+                  ? "text-[--button-style] bg-[--button-background]"
+                  : "text-black bg-white"
               } btn-waiter backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
             >
               <RiRestaurantLine />
@@ -91,14 +91,16 @@ export default function Navbar() {
               isIconOnly
               type='button'
               className={`btn-nav ${
-                pathname.startsWith("/courses/")
-                  ? "text-black bg-white"
-                  : "text-[--button-style] bg-[#ffffff30]"
+                pathname === "/courses"
+                  ? "text-[--button-style] bg-[#ffffff30]"
+                  : "text-black bg-white"
               } ${
-                cart?.cartItems.length! > 0 ? "bg-[#7dd031] text-white" : ""
+                DATA?.cartItems.length! > 0 ? "bg-[#7dd031] text-white" : ""
               } backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
             >
-              <RiShoppingBasket2Line />
+              <Link href={"/order"}>
+                <RiShoppingBasket2Line />
+              </Link>
             </Button>
           </div>
         </div>

@@ -42,8 +42,8 @@ export default function Category(props: {
       className={`w-full grid grid-cols-2 gap-5 px-2 ${RobotoFont.className}`}
     >
       {props.category.map((item) => (
-        <Link key={item.id} href={item.href}>
-          <Card shadow='sm' isPressable>
+        <Card key={item.id} shadow='sm' isPressable>
+          <Link id={item.id} href={`${item.href}`}>
             <CardBody className='w-full overflow p-0 '>
               <Image
                 removeWrapper
@@ -59,8 +59,8 @@ export default function Category(props: {
                 {item.label}
               </span>
             </CardFooter>
-          </Card>
-        </Link>
+          </Link>
+        </Card>
       ))}
     </div>
   );
