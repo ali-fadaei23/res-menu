@@ -279,9 +279,6 @@ export let data: Data = [
 export default function CoursesDetail() {
   const DATA = useData();
   const pathname = usePathname();
-  // const [selected, setSelected] = useState(pathname);
-  // const router = useRouter();
-  // console.log(pathname);
 
   const handleTabClick = (index: number) => {
     DATA?.setActiveTab(index);
@@ -295,7 +292,7 @@ export default function CoursesDetail() {
           id={tab.id}
           key={tab.key}
           className={
-             tab.href === pathname
+            tab.href === pathname
               ? "bg-black text-white rounded-full py-1 px-3"
               : "text-neutral-400 hover:text-neutral-500"
           }
@@ -317,6 +314,10 @@ export default function CoursesDetail() {
   //   [router, category]
   // );
 
+  const tabContent = data.find((item) => {
+    return item.href === pathname;
+  });
+
   return (
     <>
       <div
@@ -325,34 +326,8 @@ export default function CoursesDetail() {
         <div className='sticky top-14 z-20  bg-white w-full text-sm flex flex-row items-center justify-between px-2 py-5'>
           {renderTabs()}
         </div>
-        <div className='tab-content'>{data[DATA?.activeTab!].content}</div>
+        <div className='tab-content'>{tabContent?.content}</div>
       </div>
     </>
   );
-}
-
-{
-  /* <Tabs
-size='sm'
-id='tabs-categories'
-selectedKey={selected}
-onSelectionChange={() => setSelected}
-className={`w-full bg-white sticky top-14 z-20`}
-classNames={{
-  tabList: "w-full relative rounded-none p-4",
-  cursor: "w-full bg-gray-800 font-semibold rounded-full",
-  tab: "w-full py-4",
-  tabContent: `group-data-[selected=true]:text-white text-neutral-400`,
-}}
-variant='light'
-color='default'
-aria-label='Dynamic tabs'
-items={data}
->
-{(item) => (
-  <Tab href={item.href} key={item.href} title={item.label}>
-    {item.content}
-  </Tab>
-)}
-</Tabs> */
 }

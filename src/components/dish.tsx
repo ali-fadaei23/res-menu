@@ -10,9 +10,9 @@ import DessertImage from "../assets/dessert.jpg";
 import StartersImage from "../assets/starters.jpg";
 import SoupsImage from "../assets/soups.jpg";
 import { BsPlus, BsDash } from "react-icons/bs";
-import CoursesDetail, { data, dataCategories } from "./courses-detail";
+import { data } from "./courses-detail";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { RobotoFont } from "@/app/page";
 import Link from "next/link";
 import { useData } from "@/shared/context";
@@ -24,7 +24,6 @@ export default function Dish(props: {
   let { id, label, price } = props.dish;
   const pathname = usePathname();
   const [selected, setSelected] = useState(RemoveLastDirectoryPartOf(pathname));
-  // const [count, setcount] = useState(0);
   const [dishPrice, setDishprice] = useState(0);
 
   const reducer = (...arr: any[]) => {
@@ -135,6 +134,16 @@ export default function Dish(props: {
               radius='lg'
               alt='Dish Slider Image'
               className='object-cover w-96 h-56'
+              src={SoupsImage.src}
+            />
+          </div>
+          <div className='w-96 h-56 px-2'>
+            <Image
+              removeWrapper
+              shadow='sm'
+              radius='lg'
+              alt='Dish Slider Image'
+              className='object-cover w-96 h-56'
               src={DrinksImage.src}
             />
           </div>
@@ -233,52 +242,53 @@ export default function Dish(props: {
           Maecenas pulvinar nisi ac urna volutpat, eu vulputate mauris accumsan.
         </p>
       </section>
-      <div className='bg-neutral-100 w-full flex items-center justify-between pb-10 pt-4 px-4 border-t-1 border-neutral-300'>
-        <div className='flex items-center justify-center flex-row gap-4'>
-          <Button
-            onClick={handleDecrease}
-            radius='sm'
-            className='text-3xl font-semibold'
-            type='button'
-            isIconOnly
+      {numItems <= 0 ? (
+        <div className='bg-neutral-100 w-full flex items-center justify-between pb-10 pt-4 px-4 border-t-1 border-neutral-300'>
+          <div
+            className={`flex items-center justify-center flex-row gap-4 ${RobotoFont.className}`}
           >
-            <BsDash />
-          </Button>
-          <span className=''>{numItems}</span>
-          <Button
-            onClick={handleIncrease}
-            radius='sm'
-            className='text-3xl font-semibold'
-            type='button'
-            isIconOnly
-          >
-            <BsPlus />
-          </Button>
+            <Button
+              onClick={handleIncrease}
+              radius='sm'
+              className='text-md bg-black text-white py-2 px-14'
+              type='button'
+              isIconOnly
+            >
+              Add
+            </Button>
+          </div>
+          <div className='w-12'>
+            <span>{`$${Number(dishPrice.toFixed(2))}`}</span>
+          </div>
         </div>
-        <div className='w-12'>
-          <span>{`$${Number(dishPrice.toFixed(2))}`}</span>
+      ) : (
+        <div className='bg-neutral-100 w-full flex items-center justify-between pb-10 pt-4 px-4 border-t-1 border-neutral-300'>
+          <div className='flex items-center justify-center flex-row gap-4'>
+            <Button
+              onClick={handleDecrease}
+              radius='sm'
+              className='text-3xl font-semibold'
+              type='button'
+              isIconOnly
+            >
+              <BsDash />
+            </Button>
+            <span className=''>{numItems}</span>
+            <Button
+              onClick={handleIncrease}
+              radius='sm'
+              className='text-3xl font-semibold'
+              type='button'
+              isIconOnly
+            >
+              <BsPlus />
+            </Button>
+          </div>
+          <div className='w-12'>
+            <span>{`$${Number(dishPrice.toFixed(2))}`}</span>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
-
-// <Tabs
-// size='sm'
-// id='tabs-categories'
-// selectedKey={selected}
-// onSelectionChange={() => setSelected}
-// className={`w-full bg-white sticky top-14 z-20`}
-// classNames={{
-//   tabList: "w-full relative rounded-none p-4",
-//   cursor: "w-full bg-gray-800 font-semibold rounded-full",
-//   tab: "w-full py-4",
-//   tabContent: `group-data-[selected=true]:text-white text-neutral-400 ${RobotoFont.className}`,
-// }}
-// variant='light'
-// color='default'
-// aria-label='Dynamic tabs'
-// items={data}
-// >
-// {(item) => <Tab href={item.href} key={item.href} title={item.label} />}
-// </Tabs>
