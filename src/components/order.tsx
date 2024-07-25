@@ -24,7 +24,9 @@ export default function Order() {
   return (
     <section className='size-full flex flex-col items-center gap-36'>
       <div className='size-full flex flex-col items-start'>
-        <span className={`w-full text-lg font-bold px-5 my-6 ${RobotoFont.className}`}>
+        <span
+          className={`w-full text-lg font-bold px-5 my-6 ${RobotoFont.className}`}
+        >
           My order
         </span>
         <div className='size-full overflow-scroll flex flex-col items-center justify-start'>
@@ -104,12 +106,12 @@ export default function Order() {
           <div className={`flex items-center justify-center flex-row gap-4`}>
             <Button
               // onClick={handleIncrease}
+
               radius='sm'
               className='text-md bg-black text-white py-2 px-14'
               type='button'
-              isIconOnly
             >
-              Order
+              <Link href={`/prepare-order`}>Order</Link>
             </Button>
           </div>
         </div>

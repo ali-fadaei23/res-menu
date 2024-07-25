@@ -202,7 +202,10 @@ export default function Dish(props: {
           Duis ultricies, dolor id euismod interdum, sapien arcu rhoncus diam,
           vel pharetra arcu diam eu eros.{" "}
         </p>
-        <Divider className='my-5 h-[3px]' orientation='horizontal' />
+        <Divider
+          className='my-4 h-[2px] bg-neutral-100'
+          orientation='horizontal'
+        />
         <span className='text-md text-neutral-400'>Ingredients:</span>
         <p className={`${RobotoFont.className}`}>
           Maecenas eget maximus lorem. Donec a enim sed felis volutpat
@@ -210,7 +213,10 @@ export default function Dish(props: {
           ac urna volutpat, eu vulputate mauris accumsan. Quisque aliquam ipsum
           sapien
         </p>
-        <Divider className='my-5 h-[3px]' orientation='horizontal' />
+        <Divider
+          className='my-4 h-[2px] bg-neutral-100'
+          orientation='horizontal'
+        />
         <span className='text-md text-neutral-400'>
           Nutritional value of 100gr.
         </span>
@@ -236,7 +242,10 @@ export default function Dish(props: {
             <span className='font-bold'>306 gr.</span>
           </span>
         </p>
-        <Divider className='my-5 h-[3px]' orientation='horizontal' />
+        <Divider
+          className='my-4 h-[2px] bg-neutral-100'
+          orientation='horizontal'
+        />
         <span className='text-md text-neutral-400'>Potential allergens:</span>
         <p className={`${RobotoFont.className}`}>
           Maecenas pulvinar nisi ac urna volutpat, eu vulputate mauris accumsan.
