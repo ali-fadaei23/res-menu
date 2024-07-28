@@ -3,6 +3,7 @@ import Image from "next/image";
 import RestaurantLogo from "../assets/restaurant-image.jpg";
 import { LiaShoppingBasketSolid } from "react-icons/lia";
 import { RiRestaurantLine, RiShoppingBasket2Line } from "react-icons/ri";
+import { BsReceiptCutoff } from "react-icons/bs";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -76,6 +77,15 @@ export default function Navbar() {
             )}
           </div>
           <div className='flex flex-row justify-end items-center gap-3'>
+            {DATA?.statusOrder === "Prepare order" ? (
+              <Button
+                isIconOnly
+                type='button'
+                className={`text-black bg-white backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
+              >
+                <BsReceiptCutoff />
+              </Button>
+            ) : null}
             <Button
               isIconOnly
               type='button'

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { Providers } from "./providers";
+import AppProvider from "@/shared/context";
 
 export const GothamFont = localFont({
   src: "../assets/fonts/Gotham Pro Black.ttf",

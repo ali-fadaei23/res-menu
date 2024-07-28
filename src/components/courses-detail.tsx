@@ -284,6 +284,9 @@ export default function CoursesDetail() {
     DATA?.setActiveTab(index);
   };
 
+  console.log(DATA?.statusOrder);
+  
+  
   const renderTabs = () => {
     return data.map((tab, index) => {
       return (
@@ -303,16 +306,6 @@ export default function CoursesDetail() {
       );
     });
   };
-
-  // const cb = useCallback(
-  //   (key: Key) => {
-  //     window.scrollTo({ behavior: "smooth", top: 0 });
-  //     router.push(`/${key}`, { scroll: false });
-  //     // if (category !== key) {
-  //     // }
-  //   },
-  //   [router, category]
-  // );
 
   const tabContent = data.find((item) => {
     return item.href === pathname;

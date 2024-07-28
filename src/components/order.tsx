@@ -10,7 +10,6 @@ import { RobotoFont } from "@/app/page";
 
 export default function Order() {
   const DATA = useData();
-  console.log(DATA?.cartItems.length);
 
   const totalItems = DATA?.cartItems.reduce((prevItem, currItem) => {
     return prevItem + currItem.num;
@@ -104,15 +103,26 @@ export default function Order() {
             </div>
           </div>
           <div className={`flex items-center justify-center flex-row gap-4`}>
-            <Button
-              // onClick={handleIncrease}
-
-              radius='sm'
-              className='text-md bg-black text-white py-2 px-14'
-              type='button'
-            >
-              <Link href={`/prepare-order`}>Order</Link>
-            </Button>
+            {DATA?.cartItems.length! <= 0 ? (
+              <Button
+                // onClick={handleIncrease}
+                isDisabled
+                radius='sm'
+                className='text-md bg-black text-white py-2 px-14'
+                type='button'
+              >
+                <Link href={`/prepare-order`}>Order</Link>
+              </Button>
+            ) : (
+              <Button
+                // onClick={handleIncrease}
+                radius='sm'
+                className='text-md bg-black text-white py-2 px-14'
+                type='button'
+              >
+                <Link href={`/prepare-order`}>Order</Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>

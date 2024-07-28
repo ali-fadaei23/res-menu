@@ -4,8 +4,15 @@ import PreparedOrderImage from "../assets/prepare-food.png";
 import { BsX } from "react-icons/bs";
 import Link from "next/link";
 import { RobotoFont } from "@/app/page";
+import { useData } from "@/shared/context";
+import { useEffect } from "react";
 
 export default function PrepareOrder() {
+  const DATA = useData();
+  const handlePrepareOrder = () => {
+    DATA?.setStatusOrder("Prepare order");
+  };
+
   return (
     <section className='size-full flex flex-col items-center'>
       <div className='w-full flex items-center justify-end p-3'>
@@ -20,7 +27,7 @@ export default function PrepareOrder() {
       <div className='size-full m-auto flex flex-col items-center justify-center'>
         <Image
           width={200}
-          className="mb-5"
+          className='mb-5'
           alt='Prepared Order Image'
           src={PreparedOrderImage.src}
         />
@@ -31,12 +38,13 @@ export default function PrepareOrder() {
         className={`w-full flex items-center justify-center py-10 ${RobotoFont.className}`}
       >
         <Button
-          // onClick={handleIncrease}
+          onClick={handlePrepareOrder}
+          href='/courses'
           radius='sm'
           className='text-md bg-black text-white py-2 px-14'
           type='button'
         >
-          <Link href={``}>Order more</Link>
+        <Link href={'/courses'}>Order more</Link>  
         </Button>
       </div>
     </section>

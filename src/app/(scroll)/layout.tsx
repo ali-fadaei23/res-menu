@@ -18,11 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AppProvider>
-      <main>
-        <Navbar />
-        {children}
-      </main>
-    </AppProvider>
+    <main>
+      <Navbar />
+      {children}
+    </main>
   );
 }
