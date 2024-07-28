@@ -81,7 +81,11 @@ export default function Navbar() {
               <Button
                 isIconOnly
                 type='button'
-                className={`text-black bg-white backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
+                className={`backdrop-blur-sm shadow-md rounded-full p-2 text-2xl ${
+                  pathname === "/courses"
+                    ? "text-[--button-style] bg-[#ffffff30]"
+                    : "text-black bg-white"
+                }`}
               >
                 <BsReceiptCutoff />
               </Button>
@@ -89,24 +93,24 @@ export default function Navbar() {
             <Button
               isIconOnly
               type='button'
-              className={`btn-nav ${
+              className={`btn-nav btn-waiter backdrop-blur-sm shadow-md rounded-full p-2 text-2xl ${
                 pathname === "/courses"
-                  ? "text-[--button-style] bg-[--button-background]"
+                  ? "text-[--button-style] bg-[#ffffff30]"
                   : "text-black bg-white"
-              } btn-waiter backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
+              }`}
             >
               <RiRestaurantLine />
             </Button>
             <Button
               isIconOnly
               type='button'
-              className={`btn-nav ${
+              className={`btn-nav backdrop-blur-sm shadow-md rounded-full p-2 text-2xl ${
                 pathname === "/courses"
                   ? "text-[--button-style] bg-[#ffffff30]"
                   : "text-black bg-white"
               } ${
                 DATA?.cartItems.length! > 0 ? "bg-[#7dd031] text-white" : ""
-              } backdrop-blur-sm shadow-md rounded-full p-2 text-2xl`}
+              } `}
             >
               <Link href={"/order"}>
                 <RiShoppingBasket2Line />
@@ -117,15 +121,4 @@ export default function Navbar() {
       </nav>
     </header>
   );
-}
-
-{
-  /* <div className='w-full flex justify-start lg:flex-row gap-4 ml-2'>
-  <button
-    type='button'
-    className='text-black shadow-md bg-white rounded-full p-2 text-2xl'
-  >
-    <MdChevronLeft />
-  </button>
-</div> */
 }
