@@ -85,7 +85,11 @@ export default function Navbar() {
                   pathname === "/courses"
                     ? "text-[--button-style] bg-[#ffffff30]"
                     : "text-black bg-white"
-                }`}
+                } ${
+                  DATA?.statusOrder === "Prepare order"
+                    ? "bg-[#7dd031] text-white"
+                    : ""
+                } `}
               >
                 <BsReceiptCutoff />
               </Button>
